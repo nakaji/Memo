@@ -1,4 +1,4 @@
-Memo-
+Memo
 =====
 
 An individual memo 
