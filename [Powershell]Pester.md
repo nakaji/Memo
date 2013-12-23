@@ -46,3 +46,14 @@ scripts配下にSample.ps1,Sample.Tests.ps1が生成される。
 	    }
 	}
 	
+##Setup
+	Describe "Setup" {
+	    Context "Setup" {
+	        Setup -File "hoge.txt" "copntent"
+	        It "Contain" {
+	            "$TestDrive\hoge.txt" | Should Contain "copntent"
+	       }
+	    }
+	}
+$TestDrive（$env:TEMP配下のpesterディレクトリ）にファイル等を作成する。
+テストが終われば$TestDriveはディレクトリごと削除される。
