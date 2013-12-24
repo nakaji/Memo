@@ -1,7 +1,9 @@
 ##ダウンロード
-https://github.com/pester/Pester
+https://github.com/pester/Pester よりダウンロードし、適当なフォルダへ展開しておく。
 
 ##モジュールのインポート
+PowerShellを起動し、Pesterのモジュールをインポートする。
+
 	Import-Module Pester\Pester.psm1
 
 ##テンプレートの作成
@@ -57,3 +59,9 @@ scripts配下にSample.ps1,Sample.Tests.ps1が生成される。
 	}
 $TestDrive（$env:TEMP配下のpesterディレクトリ）にファイル等を作成する。
 テストが終われば$TestDriveはディレクトリごと削除される。
+
+##テストの実行
+下記コマンドでカレント配下のテストが自動実行される。
+
+    Invole-Pester [テストスクリプト名]|[ディレクトリ名]
+	Invoke-Pester .\scripts\JavaUtil.Tests.ps1 GetClassFile
