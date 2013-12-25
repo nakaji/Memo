@@ -19,6 +19,16 @@
 	Get-ChildItem env:
 	$env:CLASSPATH
 
+###実行確認
+#実行確認
+	$typename = "Management.Automation.Host.ChoiceDescription"
+	$yes = New-Object $typename("&Yes","実行する")
+	$no = New-Object $typename("&NO","実行しない")
+	$choice = [Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+	$answer = $Host.UI.PromptForChoice("<実行確認>","実行しますか？", $choice, 0)
+	if ($answer -ne 0) { return }
+
+
 ##文字列操作
 ###文字列配列の結合
 	[string]::Join("-", $a)
