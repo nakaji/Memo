@@ -1,26 +1,25 @@
-#PowerShellメモ
+# PowerShellメモ
 
-###スクリプト自身のパス
+### スクリプト自身のパス
 	$MyInvocation.MyCommand.Path
 
-###スクリプトが格納されているパスを返す
+### スクリプトが格納されているパスを返す
 	Split-Path $MyInvocation.MyCommand.Path
 
-###nullとの比較
+### nullとの比較
 	$hoge -eq $null
 
-###ファイルの一覧取得
+### ファイルの一覧取得
 	#指定したファイル,ディレクトリ
 	Get-Item .
 	#指定したディレクトリ配下のファイル,ディレクトリ
 	Get-ChildItem . -Recurse
 
-###環境変数の取得
+### 環境変数の取得
 	Get-ChildItem env:
 	$env:CLASSPATH
 
-###実行確認
-#実行確認
+### 実行確認
 	$typename = "Management.Automation.Host.ChoiceDescription"
 	$yes = New-Object $typename("&Yes","実行する")
 	$no = New-Object $typename("&NO","実行しない")

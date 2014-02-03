@@ -1,16 +1,16 @@
-##ダウンロード
+## ダウンロード
 https://github.com/pester/Pester よりダウンロードし、適当なフォルダへ展開しておく。
 
-##モジュールのインポート
+## モジュールのインポート
 PowerShellを起動し、Pesterのモジュールをインポートする。
 
 	Import-Module Pester\Pester.psm1
 
-##テンプレートの作成
+## テンプレートの作成
 	New-Fixture .\scripts Sample
 scripts配下にSample.ps1,Sample.Tests.ps1が生成される。
 
-##例
+## 例
 	$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 	$sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".Tests.", ".")
 	. "$here\$sut"
@@ -48,7 +48,7 @@ scripts配下にSample.ps1,Sample.Tests.ps1が生成される。
 	    }
 	}
 	
-##Setup
+## Setup
 	Describe "Setup" {
 	    Context "Setup" {
 	        Setup -File "hoge.txt" "copntent"
@@ -60,7 +60,7 @@ scripts配下にSample.ps1,Sample.Tests.ps1が生成される。
 $TestDrive（$env:TEMP配下のpesterディレクトリ）にファイル等を作成する。
 テストが終われば$TestDriveはディレクトリごと削除される。
 
-##テストの実行
+## テストの実行
 下記コマンドでカレント配下のテストが自動実行される。
 
     Invole-Pester [テストスクリプト名]|[ディレクトリ名]

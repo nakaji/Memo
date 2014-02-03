@@ -1,12 +1,12 @@
-#[SQLServer]障害発生時点までの復旧
+# [SQLServer]障害発生時点までの復旧
 
-##バックアップ
+## バックアップ
 	ALTER DATABASE AdventureWorks SET RECOVERY FULL;
 	BACKUP DATABASE AdventureWorks TO DISK = 'D:\AdventureWorks_Data.bck';
 	BACKUP LOG AdventureWorks TO DISK = 'D:\AdventureWorks_Log.bck';
 
 
-##リストア
+## リストア
 	/* Example of restoring a to the point of failure */
 	-- Step 1: Create a tail-log backup by using WITH NORECOVERY.
 	BACKUP LOG AdventureWorks

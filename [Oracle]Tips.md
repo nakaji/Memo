@@ -1,38 +1,44 @@
-#Oracleメモ
+# Oracleメモ
 
-##エクスポート、インポート
+## エクスポート、インポート
 1. [Oracle Data Pumpの概要](http://otndnld.oracle.co.jp/document/products/oracle10g/102/doc_cd/server.102/B19211-01/dp_overview.html)
 1. [Data Pump Export](http://otndnld.oracle.co.jp/document/products/oracle10g/102/doc_cd/server.102/B19211-01/dp_export.html)
 1. [Data Pump Import](http://otndnld.oracle.co.jp/document/products/oracle10g/102/doc_cd/server.102/B19211-01/dp_import.html)
 
-###ディレクトリオブジェクトの一覧を取得する
+### ディレクトリオブジェクトの一覧を取得する
 	SELECT * FROM ALL_DIRECTORIES
 
-###ディレクトリオブジェクトの作成
+### ディレクトリオブジェクトの作成
 	create directory EXP_DIR as 'D:\Exp';
 
-###エクスポート
+### エクスポート
 	expdp system/*** DUMPFILE=expdat.dmp DIRECTORY=EXP_DIR SCHEMAS=SCOTT
 
-###インポート
+### インポート
 	impdp system/*** DUMPFILE=expdat.dmp DIRECTORY=EXP_DIR REMAP_SCHEMA=SCOTT:TIGER
 
 > TABLE_EXISTS_ACTION={SKIP | APPEND | TRUNCATE | REPLACE}
 
-##SEQUENCE
+## SEQUENCE
 
-###現在の値を取得する
+### 現在の値を取得する
 	select sequence_name, last_number from user_sequences order by sequence_name;
 	select SEQURIDENNO.CURRVAL from dual;
 
-##その他
+## その他
 
-###INVALIDなオブジェクトを再コンパイル
+### INVALIDなオブジェクトを再コンパイル
 	CALL UTL_RECOMP.RECOMP_SERIAL('SUB01');
 
-###INVALIDなオブジェクトを表示
+### INVALIDなオブジェクトを表示
 	SELECT owner, object_type, status, object_name
 	FROM all_objects
 	WHERE status = 'INVALID'
 	AND owner='SUB01';
 
+### 指定ユーザのオブジェクトを全てDROPする
+	select 'drop ' || object_type || ' ' || owner || '.' || object_name || case when object_type='TABLE' then ' purge;' else ';' end
+	from all_objects
+	where object_type not in ('INDEX','LOB')
+	and owner like 'SUB%'
+	order by object_type,object_name
