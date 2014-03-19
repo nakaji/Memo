@@ -17,11 +17,14 @@
 	#指定したディレクトリ配下のファイル,ディレクトリ
 	Get-ChildItem . -Recurse
 
+### プログラムの終了コード
+	$lastexitcode
+
 ### 環境変数の取得
 	Get-ChildItem env:
 	$env:CLASSPATH
 
-### 実行確認
+### 実行確認（プロンプト）
 	$typename = "Management.Automation.Host.ChoiceDescription"
 	$yes = New-Object $typename("&Yes","実行する")
 	$no = New-Object $typename("&NO","実行しない")
