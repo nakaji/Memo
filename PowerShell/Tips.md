@@ -32,10 +32,13 @@
 	$answer = $Host.UI.PromptForChoice("<実行確認>","実行しますか？", $choice, 0)
 	if ($answer -ne 0) { return }
 
-## ファイル出力
+## ファイル操作
 ### BOMなしのUTF8で出力する
     $encoding = New-Object System.Text.UTF8Encoding($False)
     [System.IO.File]::WriteAllLines("hoge.txt", $contents, $encoding);
+
+### ディレクトリかどうかの判定
+	if ($_.PSIsContainer) { }
 
 ## 文字列操作
 ### 文字列配列の結合
