@@ -76,3 +76,10 @@ Stringオブジェクトのメソッドで行う
 	Get-Get-ChildItem -Filter "*.sql" | 
 	Where-Object{ (Get-Content $_) -match "^CREATE TABLE TR_"} | 
 	%{ Copy-Item $_ .\作成対象\ }
+
+### データベース接続文字列
+- Oracle<br>
+```$connstr = "User ID={0};Password={1};Data Source={2}" -f $user,$pass,$sid```
+- SQLServer<br>
+``` $connstr = "Persist Security Info=False;User ID={0};Password={1};Initial Catalog={2};Server={3}" -f $user,$pass,$db,$server
+ ```
