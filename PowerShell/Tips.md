@@ -20,6 +20,9 @@
 ### プログラムの終了コード
 	$lastexitcode
 
+### スクリプトの終了コードを返す
+	powershell -File ".\hoge.ps1"
+	
 ### 環境変数の取得
 	Get-ChildItem env:
 	$env:CLASSPATH
