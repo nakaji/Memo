@@ -63,5 +63,5 @@ $TestDrive（$env:TEMP配下のpesterディレクトリ）にファイル等を�
 ## テストの実行
 下記コマンドでカレント配下のテストが自動実行される。
 
-    Invole-Pester [テストスクリプト名]|[ディレクトリ名]
+    Invoke-Pester [テストスクリプト名]|[ディレクトリ名]
 	Invoke-Pester .\scripts\JavaUtil.Tests.ps1 GetClassFile
